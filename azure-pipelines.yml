@@ -78,10 +78,10 @@ stages:
           steps:
           - download: current
             artifact: drop
-          - task: AzureWebApp@1
+          - task: AzureRmWebAppDeployment@3
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              appType: webApp
+              appType: app
               azureSubscription: 'azureportal'
-              appName: 'spaceweb-dev'
+              WebAppName: 'spaceweb-dev'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
