@@ -18,5 +18,6 @@ steps:
   inputs:
      ScriptType: InlineScript
      Inline: Wrie-host "welcom"
+     azurePowerShellVersion: LatestVersion
   
    
