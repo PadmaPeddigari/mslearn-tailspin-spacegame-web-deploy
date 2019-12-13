@@ -23,7 +23,6 @@ steps:
      ScriptType: InlineScript
      Inline: |
         'New-AzureRmAppServicePlan -Name "$(ASPName)" -Location $(ASPLocation) -ResourceGroupName $(RGN) -Tier $(Tier)'
-        'Get-AzAppServicePlan | Select-Object Name'
      azurePowerShellVersion: LatestVersion
     
   
