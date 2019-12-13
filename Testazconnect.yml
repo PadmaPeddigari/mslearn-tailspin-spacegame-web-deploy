@@ -10,8 +10,8 @@ pool:
   vmImage: 'vs2017-win2016'
 
 variables:
+  group: AzureSetup
 
-  
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
