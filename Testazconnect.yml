@@ -7,15 +7,16 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
-
+  vmImage: 
+  
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- task: AzurePowerShell@3
+- task: AzurePowerShell@2
   displayName: Get/ list Az Resources
-  inputs: 
-   Inline: write-host "welcome"
+  inputs:
+     ScriptType: InlineScript
+     Inline: Wrie-host "welcom"
   
    
