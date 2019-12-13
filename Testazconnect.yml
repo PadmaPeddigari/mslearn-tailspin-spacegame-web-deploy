@@ -19,7 +19,9 @@ steps:
   inputs:
      azureSubscription: 'azureportal'
      ScriptType: InlineScript
-     Inline: 'New-AzAppServicePlan -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP" -Location "West US" -Tier "Basic" -NumberofWorkers 2 -WorkerSize "Small"'
+     Inline: |
+      'New-AzResourceGroup -Name $(RGN) -Location "$(ASPLocation)"'
+      'New-AzAppServicePlan -Name $(ASPName) -Location "$(ASPLocation)" -ResourceGroupName $(RGN) -Tier $(Tier)'
      azurePowerShellVersion: LatestVersion
     
   
