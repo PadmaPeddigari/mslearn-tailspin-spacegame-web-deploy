@@ -28,6 +28,24 @@ steps:
      ScriptType: InlineScript
      Inline: 'New-AzAppServicePlan -Name $(ASPName) -Location "$(ASPLocation)" -ResourceGroupName $(RGN) -Tier $(Tier)'
      azurePowerShellVersion: LatestVersion
+- task : AzurePowerShell@4
+  displayName: Create App Service for Hosting Dev Enironment
+  inputs:
+   azureSubscription: 'azureportal'
+   ScriptType: InlineScript
+   Inline: 'New-AzWebApp -ResourceGroupName $(RGN) -Name "$(Webappname-dev)" -Location "$(ASPLocation)" -AppServicePlan "$(ASPName)"'
+   azurePowerShellVersion: LatestVersion
+
+
+- task : AzurePowerShell@4
+  displayName: Create App Service for Hosting Test Enironment
+  inputs:
+   azureSubscription: 'azureportal'
+   ScriptType: InlineScript
+   Inline: 'New-AzWebApp -ResourceGroupName $(RGN) -Name "$(Webappname-test)" -Location "$(ASPLocation)" -AppServicePlan "$(ASPName)"'
+   azurePowerShellVersion: LatestVersion
+   
+ 
     
   
    
