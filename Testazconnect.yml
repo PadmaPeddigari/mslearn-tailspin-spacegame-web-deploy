@@ -6,22 +6,20 @@
 trigger:
 - master
 
+
 pool:
   vmImage: 'vs2017-win2016'
 
 variables:
-  group: AzureSetup
+  - group: AzureSetup
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - task: AzurePowerShell@4
-  displayName: Get/ list Az Resources
+  displayName: Get/ list Az Resource
   inputs:
      azureSubscription: 'azureportal'
      ScriptType: InlineScript
-     Inline: 'New-AzureRmAppServicePlan -Name $(ASPName) -Location $(ASPLocation) -ResourceGroupName $(RGN) -Tier $(Tier)'
+     Inline: 'New-AzureRmAppServicePlan -Name $ASPName -Location $ASPLocation -ResourceGroupName $RGN -Tier $Tier'
      azurePowerShellVersion: LatestVersion
     
   
