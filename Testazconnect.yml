@@ -19,7 +19,7 @@ steps:
   inputs:
      azureSubscription: 'azureportal'
      ScriptType: InlineScript
-     Inline: 'New-AzAppServicePlan -Name $(ASPName) -Location $(ASPLocation) -ResourceGroupName $(RGN) -Tier $(Tier)'
+     Inline: 'New-AzAppServicePlan -Name $(ASPName) -Location "$(ASPLocation)" -ResourceGroupName $(RGN) -Tier $(Tier)'
      azurePowerShellVersion: LatestVersion
     
   
