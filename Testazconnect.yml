@@ -13,11 +13,12 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- task: AzurePowerShell@2
+- task: AzurePowerShell@4
   displayName: Get/ list Az Resources
   inputs:
+     azureSubscription: 'azureportal'
      ScriptType: InlineScript
-     Inline: Wrie-host "welcom"
-     azurePowerShellVersion: LatestVersion
+     Inline: 'Get-AzureADServicePrincipal'
+    
   
    
