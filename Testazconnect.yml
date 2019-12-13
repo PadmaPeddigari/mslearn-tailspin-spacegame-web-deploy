@@ -1,0 +1,24 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: AzurePowerShell@4
+  displayName: Get/ list Az Resources
+  inputs: 
+   Inline: $passwd = ConvertTo-SecureString 'iJytH8DYMrhg[FC0rn[/KFq.7Icvpp3D' -AsPlainText -Force 
+           $pscredential = New-Object System.Management.Automation.PSCredential('930e88d8-551b-4f09-b42e-c60e76221209', $passwd)
+           Connect-AzAccount -ServicePrincipal -Credential $pscredential -Tenant 'd52c9ea1-7c21-47b1-82a3-33a74b1f74b8'
+   azureSubscription: 'azureportal'
+  
+   
