@@ -19,16 +19,14 @@ steps:
   inputs:
      azureSubscription: 'azureportal'
      ScriptType: InlineScript
-     Inline: |
-      'New-AzResourceGroup -Name $(RGN) -Location "$(ASPLocation)"' 
-      azurePowerShellVersion: LatestVersion
+     Inline: 'New-AzResourceGroup -Name $(RGN) -Location "$(ASPLocation)"' 
+     azurePowerShellVersion: LatestVersion
 - task: AzurePowerShell@4
   displayName: Craete App Service Plan --$(ASPName)
   inputs:
      azureSubscription: 'azureportal'
      ScriptType: InlineScript
-     Inline: |
-        'New-AzAppServicePlan -Name $(ASPName) -Location "$(ASPLocation)" -ResourceGroupName $(RGN) -Tier $(Tier)'
+     Inline: 'New-AzAppServicePlan -Name $(ASPName) -Location "$(ASPLocation)" -ResourceGroupName $(RGN) -Tier $(Tier)'
      azurePowerShellVersion: LatestVersion
     
   
