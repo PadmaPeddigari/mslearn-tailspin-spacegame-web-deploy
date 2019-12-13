@@ -18,7 +18,7 @@ steps:
   inputs:
      azureSubscription: 'azureportal'
      ScriptType: InlineScript
-     Inline: 'Get-AzAppServicePlan'
+     Inline: 'Get-AzAppServicePlan | Select-Object Name'
      azurePowerShellVersion: LatestVersion
     
   
