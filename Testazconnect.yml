@@ -15,13 +15,20 @@ variables:
 
 steps:
 - task: AzurePowerShell@4
-  displayName: Get/ list Az Resource
+  displayName: Create Resource Group -- $(RGN)
   inputs:
      azureSubscription: 'azureportal'
      ScriptType: InlineScript
      Inline: |
-      'New-AzResourceGroup -Name $(RGN) -Location "$(ASPLocation)"' | 
-      'New-AzAppServicePlan -Name $(ASPName) -Location "$(ASPLocation)" -ResourceGroupName $(RGN) -Tier $(Tier)'
+      'New-AzResourceGroup -Name $(RGN) -Location "$(ASPLocation)"' 
+      azurePowerShellVersion: LatestVersion
+- task: AzurePowerShell@4
+  displayName: Craete App Service Plan --$(ASPName)
+  inputs:
+     azureSubscription: 'azureportal'
+     ScriptType: InlineScript
+     Inline: |
+        'New-AzAppServicePlan -Name $(ASPName) -Location "$(ASPLocation)" -ResourceGroupName $(RGN) -Tier $(Tier)'
      azurePowerShellVersion: LatestVersion
     
   
