@@ -93,7 +93,10 @@ stages:
             inputs:
               azureSubscription: 'azureportal'
               Action: Stop Azure App Service
-              WebAppName: $(Webappname-dev)          
+              WebAppName: $(Webappname-dev)  
+              Slot: 'Production'   
+              
+
                
             
 
@@ -111,6 +114,7 @@ stages:
               azureSubscription: 'azureportal'
               Action: Start Azure App Service
               WebAppName: $(Webappname-dev)    
+              Slot: 'Production'
             
                
               
