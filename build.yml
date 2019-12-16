@@ -1,8 +1,14 @@
+trigger:
+    branches:
+     include:
+      - release 
+
 variables:
   buildConfiguration: 'Release'
   Deploy: false
 
-stages:
+stages:  
+
 - stage: 'Build'
   displayName: 'Build the web application'
   jobs: 
