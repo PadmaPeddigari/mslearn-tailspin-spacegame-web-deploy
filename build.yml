@@ -106,6 +106,7 @@ stages:
              azureSubscription: azureportal
              azurePowerShellVersion: LatestVersion
              ScriptType: InlineScript
+             ScriptArguments: $(Pipeline.Workspace)
              Inline: |
               Write-Host "Getting Ap Details"     
               $app = Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev)     
