@@ -109,8 +109,8 @@ stages:
               Write-Host "Getting Ap Details"     
               $app = Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev)     
               Write-Host '$app'     
-              $archivepath= $(Pipeline.Workspace)/drop/$(buildConfiguration)/tailspin.spacegame.web.zip"
-              Write-Host "$archivepath"
+              $archivepath= $(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip"
+              Write-Host '$archivepath'
               Publish-AzWebApp -WebApp $app -ArchivePath $archivepath -Force
               azurePowerShellVersion: LatestVersion
 
