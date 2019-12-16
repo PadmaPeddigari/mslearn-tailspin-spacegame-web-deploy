@@ -87,6 +87,16 @@ stages:
           steps:
           - download: current
             artifact: drop
+
+          - task: AzureAppServiceManage@0
+            displayName: 'stop $(Webappname-dev)'
+            inputs:
+              azureSubscription: 'azureportal'
+              Action: Stop Azure App Service
+              WebAppName: $(Webappname-dev)          
+               
+            
+
           - task: AzureRmWebAppDeployment@3
             displayName: 'Azure App Service Deploy: website'
             inputs:
@@ -94,3 +104,13 @@ stages:
               azureSubscription: 'azureportal'
               WebAppName: '$(Webappname-dev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+
+          - task: AzureAppServiceManage@0
+            displayName: 'start $(Webappname-dev)'
+            inputs:
+              azureSubscription: 'azureportal'
+              Action: Start Azure App Service
+              WebAppName: $(Webappname-dev)    
+            
+               
+              
