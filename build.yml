@@ -98,7 +98,16 @@ stages:
               
 
                
-            
+          - task: AzureWebApp@1
+            displayName: ''
+            inputs:
+             appName: '$(Webappname-dev)'
+             appType: webApp
+             azureSubscription: 'azureportal'
+             slotName: 'production'
+             package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+
+              
 
           - task: AzureRmWebAppDeployment@3
             displayName: 'Azure App Service Deploy: website'
