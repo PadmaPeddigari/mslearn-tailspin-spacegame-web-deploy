@@ -106,13 +106,7 @@ stages:
              azureSubscription: azureportal
              azurePowerShellVersion: LatestVersion
              ScriptType: InlineScript
-             ScriptArguments: $(Pipeline.Workspace)
-             Inline: |
-              Write-Host "Getting Ap Details"     
-              $app = Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev)     
-              Write-Host '$app'     
-              Write-Host '$archivepath'
-              Publish-AzWebApp -WebApp $app -ArchivePath "$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip" -Force
+             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -WebApp $app -ArchivePath "$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip" -Force'
               
 
 
