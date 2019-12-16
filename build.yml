@@ -107,6 +107,7 @@ stages:
               azureSubscription: 'azureportal'
               WebAppName: '$(Webappname-dev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+              SlotName: 'Production'
 
           - task: AzureAppServiceManage@0
             displayName: 'start $(Webappname-dev)'
