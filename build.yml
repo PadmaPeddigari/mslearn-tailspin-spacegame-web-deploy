@@ -100,16 +100,20 @@ stages:
                
 
 
-              
-
-          - task: AzureRmWebAppDeployment@3
-            displayName: 'Azure App Service Deploy: website'
+          - task: AzurePowerShell@4
+            displayName: 'Azure PowerShell script: InlineScript'
             inputs:
-              appType: app
-              azureSubscription: 'azureportal'
-              WebAppName: '$(Webappname-dev)'
-              package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-              SlotName: 'production'
+             azureSubscription: azureportal
+             ScriptType: InlineScript
+             Inline: |
+              Write-Host "Getting Ap Details"     
+              $app = Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev)     
+              Write-Host '$app'     
+              $archivepath= $(Pipeline.Workspace)/drop/$(buildConfiguration)/tailspin.spacegame.web.zip"
+              Write-Host "$archivepath"
+              Publish-AzWebApp -WebApp $app -ArchivePath $archivepath -Force
+              azurePowerShellVersion: LatestVersion
+
 
           - task: AzureAppServiceManage@0
             displayName: 'start $(Webappname-dev)'
