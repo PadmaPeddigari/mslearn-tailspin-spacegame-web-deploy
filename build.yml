@@ -87,6 +87,7 @@ stages:
           steps:
           - download: current
             artifact: drop
+
  
           #- task: DownloadPipelineArtifact@2
            # displayName: 'downlaod'
@@ -116,7 +117,7 @@ stages:
              azureSubscription: azureportal
              azurePowerShellVersion: LatestVersion
              ScriptType: InlineScript
-             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "$(Pipeline.Workspace)/drop/*.zip" -Force'
+             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "$(Pipeline.Workspace)/drop/release/*.zip" -Force'
               
 
 
