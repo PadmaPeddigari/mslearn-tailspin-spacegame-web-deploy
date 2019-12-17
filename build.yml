@@ -117,8 +117,8 @@ stages:
              azureSubscription: azureportal
              azurePowerShellVersion: LatestVersion
              ScriptType: InlineScript
-             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "$(Build.SourcesDirectory)/package/drop/release/*.zip" -Force'
-             #workingDirectory: $(Pipeline.Workspace)/drop
+             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "$(Build.SourcesDirectory)/package/Release/Tailspin.SpaceGame.Web.zip" -Force'
+             workingDirectory:  $(Build.SourcesDirectory)/package/Release
           
 
           - task: AzureAppServiceManage@0
