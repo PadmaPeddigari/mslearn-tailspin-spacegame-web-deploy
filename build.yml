@@ -85,16 +85,16 @@ stages:
       runOnce:
         deploy:
           steps:
-          - download: current
-            artifact: drop
+          #- download: current
+           # artifact: drop
 
  
-          #- task: DownloadPipelineArtifact@2
-           # displayName: 'downlaod'
-            #inputs:
-             #buildType: current
-             #artifactName: 'TailSpin.SpaceWeb.Web.zip'
-             #targetPath: '$(Build.SourcesDirectory)/package'
+          - task: DownloadPipelineArtifact@2
+            displayName: 'downlaod'
+            inputs:
+             buildType: current
+             artifactName: drop
+             targetPath: '$(Build.SourcesDirectory)/package'
             
               
 
@@ -116,8 +116,8 @@ stages:
              azureSubscription: azureportal
              azurePowerShellVersion: LatestVersion
              ScriptType: InlineScript
-             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "$(System.DefaultWorkingDirectory)/**/*.zip" -Force'
-             workingDirectory: $(Pipeline.Workspace)/drop
+             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "$(Build.SourcesDirectory)/package/drop/release/*.zip" -Force'
+             #workingDirectory: $(Pipeline.Workspace)/drop
           
 
           - task: AzureAppServiceManage@0
