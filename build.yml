@@ -109,15 +109,14 @@ stages:
               
 
                
-
-
+         
           - task: AzurePowerShell@4
             displayName: 'Azure PowerShell script: InlineScript'
             inputs:
              azureSubscription: azureportal
              azurePowerShellVersion: LatestVersion
              ScriptType: InlineScript
-             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "**/*.zip" -Force'
+             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "$(System.DefaultWorkingDirectory)/**/*.zip" -Force'
              workingDirectory: $(Pipeline.Workspace)/drop
           
 
