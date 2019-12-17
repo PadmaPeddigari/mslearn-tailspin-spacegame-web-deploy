@@ -117,9 +117,9 @@ stages:
              azureSubscription: azureportal
              azurePowerShellVersion: LatestVersion
              ScriptType: InlineScript
-             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "./*.zip" -Force'
-              
-
+             Inline: 'Get-AzWebApp -ResourceGroupName $(RGN) -Name $(Webappname-dev) | Publish-AzWebApp -ArchivePath "**/*.zip" -Force'
+             workingDirectory: $(Pipeline.Workspace)/drop
+          
 
           - task: AzureAppServiceManage@0
             displayName: 'start $(Webappname-dev)'
