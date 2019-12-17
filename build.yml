@@ -96,7 +96,8 @@ stages:
              artifactName: drop
              targetPath: '$(Build.SourcesDirectory)/package'
             
-              
+          - powershell: 'Get-Childitem -Path $(Build.SourcesDirectory)/package'
+            
 
 
           - task: AzureAppServiceManage@0
